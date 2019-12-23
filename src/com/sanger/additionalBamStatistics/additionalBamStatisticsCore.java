@@ -22,17 +22,17 @@ public class additionalBamStatisticsCore {
 		this.diffThreshold = diffThreshold;
 		this.exceed = exceed;
 		try {
-			System.out.println("Loading variants...");
+			System.err.println("Loading variants...");
 			var variantMap = getVariantList(inputAnnovar);
-			System.out.println("Reading reference sequences...");
+			System.err.println("Reading reference sequences...");
 			getReferenceSequence(variantMap, referenceFile, searchWindow, threads);
-			System.out.println("Transforming variants...");
+			System.err.println("Transforming variants...");
 			var variantSet = generateVariantSet(variantMap);
-			System.out.println("Loading SNP database...");
+			System.err.println("Loading SNP database...");
 			Optional<Map<String, HashSet<String>>> snpdb = Optional.ofNullable((snpDatabase != null) ? readSnpDatabase(snpDatabase) : null);
-			System.out.println("Processing variants...");
+			System.err.println("Processing variants...");
 			for(String chr: variantMap.keySet()) {
-				System.out.println("Chromosome " + chr + "...");
+				System.err.println("Chromosome " + chr + "...");
 				var currentVariants = variantMap.get(chr);
 				var currentVariantSet = variantSet.get(chr);
 				var currentSNPs = (snpdb.isPresent() ? snpdb.get().get(chr) : null);
@@ -88,7 +88,7 @@ public class additionalBamStatisticsCore {
 			input.close();
 			var exit = proc.waitFor();
 			if(exit != 0) {
-				System.out.println("Script has failed");
+				System.err.println("Script has failed");
 				System.exit(-4);
 			}
 		}
@@ -497,7 +497,7 @@ public class additionalBamStatisticsCore {
 					tmp.indel = true;
 				}
 				else {
-					System.out.println("You are missing the following operator: " + tel.getOperator().toString());
+					System.err.println("You are missing the following operator: " + tel.getOperator().toString());
 					System.exit(0);
 				}
 			}
