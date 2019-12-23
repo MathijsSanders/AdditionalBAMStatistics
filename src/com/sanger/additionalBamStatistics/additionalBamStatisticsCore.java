@@ -345,13 +345,11 @@ public class additionalBamStatisticsCore {
 	}
 	private void writeResults(LinkedHashMap<String, ArrayList<variantInfo>> variantMap, File outFile) {
 		try {
-			BufferedWriter output = new BufferedWriter(new FileWriter(outFile));
-			StringBuffer buffer = new StringBuffer();
-			int counter = 0;
+			PrintStream output = (outFile == null) ? new PrintStream(System.out) : new PrintStream(new FileOutputStream(outFile));
 			String reachable = "";
 			int[] tmpReach = null;
 			int i;
-			output.write(header.get() + "\tAlternative_alignment\tAlternative_alignment_var\tSub_Exceed_Align\tSub_Exceed_Align_var\tSub_Small_Edit\tSub_Small_Edit_var\tClipped\tClipped_var\tNonSNP_variants\tNonSNP_variants_var\tVar_pos_reads\tVar_pos_reads_used_stats\tVar_pos_5_prime_15%_reads\tMAD_var_pos_reads\tSD_var_pos_reads\tVar_neg_reads\tVar_neg_reads_used_stats\tVar_neg_5_prime_15%_reads\tMAD_var_neg_reads\tSD_var_neg_reads\tVar_reads\tVar_reads_unique\tVar_reads_unique_pos\tVar_reads_unique_neg\tVar_reads_somatic_variants\tVar_reads_somatic_variants_measurable\n");
+			output.println(header.get() + "\tAlternative_alignment\tAlternative_alignment_var\tSub_Exceed_Align\tSub_Exceed_Align_var\tSub_Small_Edit\tSub_Small_Edit_var\tClipped\tClipped_var\tNonSNP_variants\tNonSNP_variants_var\tVar_pos_reads\tVar_pos_reads_used_stats\tVar_pos_5_prime_15%_reads\tMAD_var_pos_reads\tSD_var_pos_reads\tVar_neg_reads\tVar_neg_reads_used_stats\tVar_neg_5_prime_15%_reads\tMAD_var_neg_reads\tSD_var_neg_reads\tVar_reads\tVar_reads_unique\tVar_reads_unique_pos\tVar_reads_unique_neg\tVar_reads_somatic_variants\tVar_reads_somatic_variants_measurable");
 			for(final String chr : variantMap.keySet()) {
 				var variantList = variantMap.get(chr);
 				for(final variantInfo dat: variantList) {
@@ -363,19 +361,9 @@ public class additionalBamStatisticsCore {
 					}
 					else
 						reachable = Integer.toString(dat.getVarSomaticReachable()[0]);	
-					buffer.append(dat.getLine() + "\t" + dat.getAltAlignComplete() + "\t" + dat.getAltAlignVar() + "\t" + dat.getSubExceedAlignComplete() + "\t" + dat.getSubExceedAlignVar() + "\t" + dat.getSubSmallEditComplete() + "\t" + dat.getSubSmallEditVar() + "\t" + dat.getClipComplete() + "\t" + dat.getClipVar() + "\t" + dat.getNMDistanceComplete() + "\t" + dat.getNMDistanceVar() + "\t" + dat.getVarPosReads() + "\t" + dat.getCountPosReadsStats() + "\t" + dat.getVarPosStartReads() + "\t" + ((dat.getCountPosReadsStats() >= 2) ? medianAbsoluteDeviation(dat.getVarPosLocs(),dat.getVarPosLocUse()) + "\t" + standardDeviation(dat.getVarPosLocs(),dat.getVarPosLocUse()) : "NA\tNA") + "\t" + dat.getVarNegReads() + "\t" + dat.getCountNegReadsStats() + "\t" + dat.getVarNegStartReads() + "\t" + ((dat.getCountNegReadsStats() >= 2) ? medianAbsoluteDeviation(dat.getVarNegLocs(),dat.getVarNegLocUse()) + "\t" + standardDeviation(dat.getVarNegLocs(),dat.getVarNegLocUse()) : "NA\tNA") + "\t" + dat.getVarReads() + "\t" + dat.getVarReadsUnique() + "\t" + dat.getVarReadsUniquePos() + "\t" + dat.getVarReadsUniqueNeg() + "\t" + dat.getVarSomatic() + "\t" + reachable + "\n");
-					counter++;
-					if(counter == 100) {
-						output.write(buffer.toString());
-						output.flush();
-						buffer = new StringBuffer();
-						counter = 0;
-					}
+					output.println(dat.getLine() + "\t" + dat.getAltAlignComplete() + "\t" + dat.getAltAlignVar() + "\t" + dat.getSubExceedAlignComplete() + "\t" + dat.getSubExceedAlignVar() + "\t" + dat.getSubSmallEditComplete() + "\t" + dat.getSubSmallEditVar() + "\t" + dat.getClipComplete() + "\t" + dat.getClipVar() + "\t" + dat.getNMDistanceComplete() + "\t" + dat.getNMDistanceVar() + "\t" + dat.getVarPosReads() + "\t" + dat.getCountPosReadsStats() + "\t" + dat.getVarPosStartReads() + "\t" + ((dat.getCountPosReadsStats() >= 2) ? medianAbsoluteDeviation(dat.getVarPosLocs(),dat.getVarPosLocUse()) + "\t" + standardDeviation(dat.getVarPosLocs(),dat.getVarPosLocUse()) : "NA\tNA") + "\t" + dat.getVarNegReads() + "\t" + dat.getCountNegReadsStats() + "\t" + dat.getVarNegStartReads() + "\t" + ((dat.getCountNegReadsStats() >= 2) ? medianAbsoluteDeviation(dat.getVarNegLocs(),dat.getVarNegLocUse()) + "\t" + standardDeviation(dat.getVarNegLocs(),dat.getVarNegLocUse()) : "NA\tNA") + "\t" + dat.getVarReads() + "\t" + dat.getVarReadsUnique() + "\t" + dat.getVarReadsUniquePos() + "\t" + dat.getVarReadsUniqueNeg() + "\t" + dat.getVarSomatic() + "\t" + reachable);
+					output.flush();
 				}
-			}
-			if(counter > 0) {
-				output.write(buffer.toString());
-				output.flush();
 			}
 			output.close();
 		}

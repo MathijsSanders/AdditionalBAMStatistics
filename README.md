@@ -1,1 +1,1 @@
-Soon going to be completed.
+Soon to be completed.

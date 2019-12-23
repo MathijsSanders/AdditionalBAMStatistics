@@ -16,11 +16,11 @@ public class additionalBamStatistics {
 	@Parameter(names = "--input-bam-file", description = "Input BAM file for processing", required = true, converter = FileConverter.class, order=1)
 	public File input_bam_file = null;
 	
-	@Parameter(names = "--output-file", description = "Output file for amended ANNOVAR file", required = true, order=2)
-	public File output_file = null;
-	
-	@Parameter(names = "--reference", description = "Reference FASTA sequence file used for alignment", required = true, converter = FileConverter.class, order=3)
+	@Parameter(names = "--reference", description = "Reference FASTA sequence file used for alignment", required = true, converter = FileConverter.class, order=2)
 	public File reference = null;
+	
+	@Parameter(names = "--output-file", description = "Output file for amended ANNOVAR file (Default: standard out)", order=3)
+	public File output_file = null;
 	
 	@Parameter(names = "--snp-database", description = "SNP database" , converter = FileConverter.class, order=4)
 	public File snpdb = null;
