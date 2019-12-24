@@ -2,6 +2,10 @@
 
 This repository contains code for further annotating ANNOVAR files with statistics helpful for variant filtering. Especially in the context of laser capture microdissection these statistics are useful for detecting false positive variants as a consequence of hairpins.
 
+Test | Test2
+--- | ---
+Test3 | Test4
+
 ## How do I run it?
 
 AdditionalBAMStatistics is a precompiled multi-threaded JAVA package that amends ANNOVAR files with useful statistics for filtering variants. There are three simple ways of installing AdditionalBAMStatistics.
