@@ -83,7 +83,7 @@ java -Xmx10G -jar additionalBamStatistics.jar --input-annovar-file <annovar_file
 ```
 
 - --input-annovar-file*:|The ANNOVAR file to be further annotated.
-- --input-bam-file*:              The corresponding BAM files of the sample of interest.
+- --input-bam-file*:|The corresponding BAM files of the sample of interest.
 - --reference*:                   The indexed reference FASTA file used for alignment.
 - --output-file:                  Output file for writing the results (Default: standard out).
 - --snp-database:                 SNP database for annotating reads with too many mismatches not reported as SNPs (Either vcf or vcf.gz)
