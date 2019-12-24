@@ -50,16 +50,16 @@ The following parameters are available:
 
 Parameter | Description
 --- | ---
--a/--annovarfile*: | The ANNOVAR file to be further annotated.
--b/--bamfile*: | The corresponding BAM files of the sample of interest.
--r/--reference*: | The indexed reference FASTA file used for alignment.
--o/--output-file: | Output file for writing the results (Default: standard out).
--s/--snp-database: | SNP database for annotating reads with too many mismatches not reported as SNPs (Either vcf or vcf.gz).
--m/--max-non-snp: | The maximum number of mismatched not reported as SNP before a read is marked as having too many mutations (Default: 2).
--d/--diff-alignment-score: | The difference between the current and alternative alignment score before a read is considered multi-mappable (Default: 5).
--t/--threads: | Number of threads to use (Default: 1).
--c/--current-heapsize: | The maximum heap size JAVA can use (Default: 10G). This threshold should be increased in case a larger SNP database is used.
--h/--help: | Help information.
+-a/--annovarfile* | The ANNOVAR file to be further annotated.
+-b/--bamfile* | The corresponding BAM files of the sample of interest.
+-r/--reference* | The indexed reference FASTA file used for alignment.
+-o/--output-file | Output file for writing the results (Default: standard out).
+-s/--snp-database | SNP database for annotating reads with too many mismatches not reported as SNPs (Either vcf or vcf.gz).
+-m/--max-non-snp | The maximum number of mismatched not reported as SNP before a read is marked as having too many mutations (Default: 2).
+-d/--diff-alignment-score | The difference between the current and alternative alignment score before a read is considered multi-mappable (Default: 5).
+-t/--threads | Number of threads to use (Default: 1).
+-c/--current-heapsize | The maximum heap size JAVA can use (Default: 10G). This threshold should be increased in case a larger SNP database is used.
+-h/--help | Help information.
 \* | Required.
 
 ### 2. The easy way - Use precompiled JAR file
@@ -84,17 +84,19 @@ Run the following command to start annotating the ANNOVAR file:
 java -Xmx10G -jar additionalBamStatistics.jar --input-annovar-file <annovar_file> --input-bam-file <bam_file> --reference <reference_file> --output-file <output_file> --snp-database <snp_database> --max-non-snp <max_non_snp> --difference-alignment-scores <diff_scores> --threads <threads> --help --version
 ```
 
-- --input-annovar-file*: | The ANNOVAR file to be further annotated.
-- --input-bam-file*: | The corresponding BAM files of the sample of interest.
-- --reference*:                   The indexed reference FASTA file used for alignment.
-- --output-file:                  Output file for writing the results (Default: standard out).
-- --snp-database:                 SNP database for annotating reads with too many mismatches not reported as SNPs (Either vcf or vcf.gz)
-- --max-non-snp:                  The maximum number of mismatched not reported as SNP before a read is marked as having too many mutations (Default: 2).
-- --difference-alignment-score:   The difference between the current and alternative alignment score before a read is considered multi-mappable (Default: 5).
-- --threads:                      Number of threads to use (Default: 1).
-- --help:                         Help information.
-- --version:                      Version information.
-- \* Required.
+Parameter | Description
+--- | ---
+--input-annovar-file* | The ANNOVAR file to be further annotated.
+--input-bam-file* | The corresponding BAM files of the sample of interest.
+--reference* | The indexed reference FASTA file used for alignment.
+--output-file | Output file for writing the results (Default: standard out).
+--snp-database | SNP database for annotating reads with too many mismatches not reported as SNPs (Either vcf or vcf.gz)
+--max-non-snp | The maximum number of mismatched not reported as SNP before a read is marked as having too many mutations (Default: 2).
+--difference-alignment-score | The difference between the current and alternative alignment score before a read is considered multi-mappable (Default: 5).
+--threads | Number of threads to use (Default: 1).
+--help | Help information.
+--version | Version information.
+\* | Required.
 
 ### 3. The difficult way - Compile package
 
