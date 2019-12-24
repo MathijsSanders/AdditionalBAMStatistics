@@ -109,4 +109,4 @@ The precompiled JAR file is included with the repository, but in case the packag
 mvn package clean
 ```
 
-Once the JAR file is compiled please follow the JAR-specific instructions listed under point 2.
+Once the JAR file is compiled please follow the JAR-specific instructions listed under **point 2**.
