@@ -2,10 +2,6 @@
 
 This repository contains code for further annotating ANNOVAR files with statistics helpful for variant filtering. Especially in the context of laser capture microdissection these statistics are useful for detecting false positive variants as a consequence of hairpins.
 
-Test | Test2
---- | ---
-Test3 | Test4
-
 ## How do I run it?
 
 AdditionalBAMStatistics is a precompiled multi-threaded JAVA package that amends ANNOVAR files with useful statistics for filtering variants. There are three simple ways of installing AdditionalBAMStatistics.
@@ -52,17 +48,19 @@ This includes:
 
 The following parameters are available:
 
-- -a/--annovarfile*:          The ANNOVAR file to be further annotated.
-- -b/--bamfile*:              The corresponding BAM files of the sample of interest.
-- -r/--reference*:            The indexed reference FASTA file used for alignment.
-- -o/--output-file:           Output file for writing the results (Default: standard out).
-- -s/--snp-database:          SNP database for annotating reads with too many mismatches not reported as SNPs (Either vcf or vcf.gz).
-- -m/--max-non-snp:           The maximum number of mismatched not reported as SNP before a read is marked as having too many mutations (Default: 2).
-- -d/--diff-alignment-score:  The difference between the current and alternative alignment score before a read is considered multi-mappable (Default: 5).
-- -t/--threads:               Number of threads to use (Default: 1).
-- -c/--current-heapsize:      The maximum heap size JAVA can use (Default: 10G). This threshold should be increased in case a larger SNP database is used.
-- -h/--help:                  Help information.
-- \* Required.
+Parameter | Description
+--- | ---
+-a/--annovarfile*: | The ANNOVAR file to be further annotated.
+-b/--bamfile*: | The corresponding BAM files of the sample of interest.
+-r/--reference*: | The indexed reference FASTA file used for alignment.
+-o/--output-file: | Output file for writing the results (Default: standard out).
+-s/--snp-database: | SNP database for annotating reads with too many mismatches not reported as SNPs (Either vcf or vcf.gz).
+-m/--max-non-snp: | The maximum number of mismatched not reported as SNP before a read is marked as having too many mutations (Default: 2).
+-d/--diff-alignment-score: | The difference between the current and alternative alignment score before a read is considered multi-mappable (Default: 5).
+-t/--threads: | Number of threads to use (Default: 1).
+-c/--current-heapsize: | The maximum heap size JAVA can use (Default: 10G). This threshold should be increased in case a larger SNP database is used.
+-h/--help: | Help information.
+\* | Required.
 
 ### 2. The easy way - Use precompiled JAR file
 
