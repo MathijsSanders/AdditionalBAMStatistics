@@ -82,7 +82,7 @@ Run the following command to start annotating the ANNOVAR file:
 java -Xmx10G -jar additionalBamStatistics.jar --input-annovar-file <annovar_file> --input-bam-file <bam_file> --reference <reference_file> --output-file <output_file> --snp-database <snp_database> --max-non-snp <max_non_snp> --difference-alignment-scores <diff_scores> --threads <threads> --help --version
 ```
 
-- --input-annovar-file*:          The ANNOVAR file to be further annotated.
+- |--input-annovar-file*:|The ANNOVAR file to be further annotated.|
 - --input-bam-file*:              The corresponding BAM files of the sample of interest.
 - --reference*:                   The indexed reference FASTA file used for alignment.
 - --output-file:                  Output file for writing the results (Default: standard out).
