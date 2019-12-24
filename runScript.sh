@@ -157,7 +157,7 @@ else
 	ADD_PARAM=$(echo "$ADD_PARAM --threads $THREADS")
 fi
 
-/software/jdk-11.0.2/bin/java -Xmx${CHEAP}G -jar /lustre/scratch116/casm/cgp/users/ms44/tools/tmp/AdditionalBAMStatistics/additionalBamStatistics.jar --input-annovar-file $ANNOVARFILE --input-bam-file $BAMFILE --reference $REFERENCE $ADD_PARAM 
+java -Xmx${CHEAP}G -jar /lustre/scratch116/casm/cgp/users/ms44/tools/tmp/AdditionalBAMStatistics/additionalBamStatistics.jar --input-annovar-file $ANNOVARFILE --input-bam-file $BAMFILE --reference $REFERENCE $ADD_PARAM 
 
 if [[ $? -ne 0 ]]
 then
