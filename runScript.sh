@@ -67,7 +67,7 @@ ADD_PARAM=''
 
 if [ ! -z "$HELP" ]
 then
-	java -jar /code/AdditionalBAMStatistics/additionalBAMStatistics.jar --help
+	java -jar /code/additionalBAMStatistics.jar --help
 	exit 0
 fi
 
