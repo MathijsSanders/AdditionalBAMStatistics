@@ -36,7 +36,7 @@ samtools faidx <reference_FASTA_file>
 The JAVA package has been incorporated into a Singularity container available from Singularity hub. In case singularity is installed, simply run:
 
 ```bash
-singularity pull shub://MathijsSanders/AnnotateBAMStatisticsSingularity
+singularity pull shub://MathijsSanders/AdditionalBAMStatisticsSingularity
 ```
 
  Still requires that the reference genome is indexed!
